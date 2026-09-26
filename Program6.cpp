@@ -1,45 +1,75 @@
-#include <iostream>                                  // Used for input/output
+// Program 6: Demonstration of Multiple Inheritance
 
-class Academic {                                     // Base class for academic marks
+#include <iostream>
+using namespace std;
+
+// First base class
+class Academic
+{
 protected:
-    int academicMarks;                               // Stores academic marks
+    int academicMarks;
 
 public:
-    explicit Academic(int marks) : academicMarks(marks) {} // Constructor
+    // Constructor
+    Academic(int marks)
+    {
+        academicMarks = marks;
+    }
 
-    void showAcademic() const {                      // Displays academic marks
-        std::cout << "Academic Marks: " << academicMarks << '\n';
+    // Display academic marks
+    void showAcademic()
+    {
+        cout << "Academic Marks: " << academicMarks << endl;
     }
 };
 
-class Sports {                                       // Base class for sports marks
+// Second base class
+class Sports
+{
 protected:
-    int sportsMarks;                                 // Stores sports marks
+    int sportsMarks;
 
 public:
-    explicit Sports(int marks) : sportsMarks(marks) {} // Constructor
+    // Constructor
+    Sports(int marks)
+    {
+        sportsMarks = marks;
+    }
 
-    void showSports() const {                        // Displays sports marks
-        std::cout << "Sports Marks: " << sportsMarks << '\n';
+    // Display sports marks
+    void showSports()
+    {
+        cout << "Sports Marks: " << sportsMarks << endl;
     }
 };
 
-class Student : public Academic, public Sports {     // Multiple inheritance
+// Multiple inheritance
+class Student : public Academic, public Sports
+{
 public:
+    // Constructor
     Student(int academic, int sports)
-        : Academic(academic), Sports(sports) {}      // Calls both base constructors
+        : Academic(academic), Sports(sports)
+    {
+    }
 
-    void showTotal() const {                          // Calculates total marks
-        std::cout << "Total Marks: "
-                  << academicMarks + sportsMarks << '\n';
+    // Display total
+    void showTotal()
+    {
+        cout << "Total Marks: "
+             << academicMarks + sportsMarks << endl;
     }
 };
 
-int main() {
-    Student student(80, 15);                         // Creates Student object
-    student.showAcademic();                          // Displays academic marks
-    student.showSports();                            // Displays sports marks
-    student.showTotal();                             // Displays total marks
+int main()
+{
+    // Create Student object
+    Student s(76, 18);
+
+    // Display marks
+    s.showAcademic();
+    s.showSports();
+    s.showTotal();
 
     return 0;
 }
