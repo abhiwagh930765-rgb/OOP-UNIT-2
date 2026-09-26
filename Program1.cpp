@@ -1,37 +1,57 @@
-#include <iostream>                         // Used for input/output
-#include <string>                           // Used for string data type
-#include <utility>                          // Used for std::move
+// Program 1: Demonstration of Single Inheritance
 
-class Person {                              // Base class
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Person
+{
 protected:
-    std::string name;                       // Protected data member
+    string name;
 
 public:
-    explicit Person(std::string personName) // Constructor of Person
-        : name(std::move(personName)) {}    // Initializes name
+    // Constructor
+    Person(string n)
+    {
+        name = n;
+    }
 
-    void displayName() const {              // Member function to display name
-        std::cout << "Name: " << name << '\n';
+    // Display name
+    void displayName()
+    {
+        cout << "Name: " << name << endl;
     }
 };
 
-class Student : public Person {             // Student inherits from Person
+// Derived class
+class Student : public Person
+{
 private:
-    int rollNumber;                         // Private data member
+    int rollNumber;
 
 public:
-    Student(std::string studentName, int roll) // Constructor of Student
-        : Person(std::move(studentName)),      // Calls Person constructor
-          rollNumber(roll) {}                  // Initializes rollNumber
+    // Constructor
+    Student(string n, int r) : Person(n)
+    {
+        rollNumber = r;
+    }
 
-    void displayStudent() const {            // Member function to display student details
-        displayName();                       // Calls inherited function
-        std::cout << "Roll Number: " << rollNumber << '\n';
+    // Display student details
+    void displayStudent()
+    {
+        displayName();
+        cout << "Roll Number: " << rollNumber << endl;
     }
 };
 
-int main() {                                // Program execution starts here
-    Student student("Amit", 101);            // Creates Student object
-    student.displayStudent();                // Calls displayStudent()
-    return 0;                                // Ends the program
+int main()
+{
+    // Create Student object
+    Student s("Sarthak", 102);
+
+    // Display details
+    s.displayStudent();
+
+    return 0;
 }
