@@ -1,34 +1,51 @@
-#include <iostream>                              // Used for input/output
-#include <string>                                // Used for string data type
-#include <utility>                               // Used for std::move
+// Program 2: Demonstration of Protected Member Access
 
-class Employee {                                 // Base class
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Employee
+{
 protected:
-    std::string name;                            // Protected data member
+    string name;
 
 public:
-    explicit Employee(std::string employeeName)  // Constructor of Employee
-        : name(std::move(employeeName)) {}       // Initializes name
-};
-
-class Developer : public Employee {              // Developer inherits from Employee
-private:
-    std::string language;                        // Private data member
-
-public:
-    Developer(std::string employeeName,          // Constructor of Developer
-              std::string programmingLanguage)
-        : Employee(std::move(employeeName)),     // Calls Employee constructor
-          language(std::move(programmingLanguage)) {} // Initializes language
-
-    void display() const {                       // Member function to display details
-        std::cout << "Developer: " << name << '\n';     // Displays developer name
-        std::cout << "Language: " << language << '\n';  // Displays programming language
+    // Constructor
+    Employee(string n)
+    {
+        name = n;
     }
 };
 
-int main() {                                     // Program execution starts here
-    Developer developer("Neha", "C++");          // Creates Developer object
-    developer.display();                         // Calls display function
-    return 0;                                    // Ends the program
+// Derived class
+class Developer : public Employee
+{
+private:
+    string language;
+
+public:
+    // Constructor
+    Developer(string n, string lang) : Employee(n)
+    {
+        language = lang;
+    }
+
+    // Display details
+    void display()
+    {
+        cout << "Developer: " << name << endl;
+        cout << "Language: " << language << endl;
+    }
+};
+
+int main()
+{
+    // Create Developer object
+    Developer d("Sarthak", "CPP");
+
+    // Display details
+    d.display();
+
+    return 0;
 }
