@@ -1,50 +1,78 @@
-#include <iostream>                         
-#include <string>                           // Used for string data type
-#include <utility>                          // Used for std::move
+// Program 4: Demonstration of Multilevel Inheritance
 
-class Person {                              // Base class
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Person
+{
 protected:
-    std::string name;                       // Protected data member
+    string name;
 
 public:
-    explicit Person(std::string personName) // Constructor of Person
-        : name(std::move(personName)) {}    // Initializes name
+    // Constructor
+    Person(string n)
+    {
+        name = n;
+    }
 
-    void showPerson() const {               // Member function to display person details
-        std::cout << "Name: " << name << '\n';
+    // Display person details
+    void showPerson()
+    {
+        cout << "Name: " << name << endl;
     }
 };
 
-class Employee : public Person {            // Employee inherits from Person
+// Derived class
+class Employee : public Person
+{
 protected:
-    int employeeId;                         // Protected data member
+    int employeeId;
 
 public:
-    Employee(std::string employeeName, int id) // Constructor of Employee
-        : Person(std::move(employeeName)), employeeId(id) {} // Initializes base and ID
+    // Constructor
+    Employee(string n, int id) : Person(n)
+    {
+        employeeId = id;
+    }
 
-    void showEmployee() const {             // Member function to display employee details
-        std::cout << "Employee ID: " << employeeId << '\n';
+    // Display employee details
+    void showEmployee()
+    {
+        cout << "Employee ID: " << employeeId << endl;
     }
 };
 
-class Manager : public Employee {           // Manager inherits from Employee
+// Derived class
+class Manager : public Employee
+{
 private:
-    int teamSize;                           // Private data member
+    int teamSize;
 
 public:
-    Manager(std::string managerName, int id, int size) // Constructor of Manager
-        : Employee(std::move(managerName), id), teamSize(size) {} // Initializes base and team size
+    // Constructor
+    Manager(string n, int id, int size) : Employee(n, id)
+    {
+        teamSize = size;
+    }
 
-    void showManager() const {              // Member function to display manager details
-        showPerson();                       // Calls Person's function
-        showEmployee();                     // Calls Employee's function
-        std::cout << "Team Size: " << teamSize << '\n'; // Displays team size
+    // Display manager details
+    void showManager()
+    {
+        showPerson();
+        showEmployee();
+        cout << "Team Size: " << teamSize << endl;
     }
 };
 
-int main() {                                // Program execution starts here
-    Manager manager("Ravi", 501, 8);        // Creates Manager object
-    manager.showManager();                  // Calls showManager()
-    return 0;                             
+int main()
+{
+    // Create Manager object
+    Manager m("Akash", 708, 12);
+
+    // Display details
+    m.showManager();
+
+    return 0;
 }
