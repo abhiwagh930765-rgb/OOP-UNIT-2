@@ -1,33 +1,51 @@
+// Program 9: Demonstration of Parameterized Base Constructor
+
 #include <iostream>
 #include <string>
-#include <utility>
+using namespace std;
 
-class Person {
+// Base class
+class Person
+{
 protected:
-    std::string name;  // Accessible in derived class
+    string name;
 
 public:
-    explicit Person(std::string personName)
-        : name(std::move(personName)) {}
+    // Parameterized constructor
+    Person(string n)
+    {
+        name = n;
+    }
 };
 
-class Student : public Person {  // Student inherits Person
+// Derived class
+class Student : public Person
+{
 private:
     int rollNumber;
 
 public:
-    Student(std::string studentName, int roll)
-        : Person(std::move(studentName)), rollNumber(roll) {}
+    // Constructor
+    Student(string n, int r) : Person(n)
+    {
+        rollNumber = r;
+    }
 
-    void display() const {
-        std::cout << "Name: " << name << '\n';
-        std::cout << "Roll Number: " << rollNumber << '\n';
+    // Display details
+    void display()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
     }
 };
 
-int main() {
-    Student student("Kiran", 24);  // Create Student object
-    student.display();             // Display student details
+int main()
+{
+    // Create Student object
+    Student s("Sonu", 46);
+
+    // Display details
+    s.display();
 
     return 0;
 }
