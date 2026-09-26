@@ -1,31 +1,44 @@
+// Program 14: Demonstration of Nested Class
+
 #include <iostream>
 #include <string>
-#include <utility>
+using namespace std;
 
-class University {
+// Outer class
+class University
+{
 public:
-    // Nested class: Department is defined inside University
-    class Department {
+
+    // Nested class
+    class Department
+    {
     private:
-        std::string name;  // Stores department name
+        string name;
 
     public:
-        explicit Department(std::string departmentName)
-            : name(std::move(departmentName)) {}  // Initialize department name
+        // Constructor
+        Department(string n)
+        {
+            name = n;
+        }
 
-        void display() const {
-            std::cout << "Department: " << name << '\n';  // Display department
+        // Display department
+        void display()
+        {
+            cout << "Department: " << name << endl;
         }
     };
 };
 
-int main() {
-    // Access nested class using University::Department
-    University::Department department(
-        "Artificial Intelligence and Data Science"
+int main()
+{
+    // Create nested class object
+    University::Department d(
+        "Computer Engineering"
     );
 
-    department.display();  // Call display function
+    // Display department
+    d.display();
 
     return 0;
 }
