@@ -1,29 +1,46 @@
+// Program 13: Demonstration of Friend Class
+
 #include <iostream>
+using namespace std;
 
-class Account {
+// Account class
+class Account
+{
 private:
-    double balance;  // Private member cannot normally be accessed outside Account
+    double balance;
 
-    friend class Auditor;  // Auditor can access Account's private members
+    // Friend class declaration
+    friend class Auditor;
 
 public:
-    explicit Account(double initialBalance)
-        : balance(initialBalance) {}  // Initialize account balance
-};
-
-class Auditor {
-public:
-    void inspect(const Account& account) const {
-        // Friend class allows access to Account's private balance
-        std::cout << "Account Balance: " << account.balance << '\n';
+    // Constructor
+    Account(double amount)
+    {
+        balance = amount;
     }
 };
 
-int main() {
-    Account account(5000.0);  // Create Account object with balance
-    Auditor auditor;          // Create Auditor object
+// Friend class
+class Auditor
+{
+public:
+    // Access private member
+    void inspect(Account a)
+    {
+        cout << "Account Balance: " << a.balance << endl;
+    }
+};
 
-    auditor.inspect(account); // Auditor checks the account balance
+int main()
+{
+    // Create Account object
+    Account account(7500);
+
+    // Create Auditor object
+    Auditor auditor;
+
+    // Inspect account
+    auditor.inspect(account);
 
     return 0;
 }
