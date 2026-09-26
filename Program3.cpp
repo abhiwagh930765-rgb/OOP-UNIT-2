@@ -1,30 +1,48 @@
-#include <iostream>                              // Used for input/output
+// Program 3: Demonstration of Public and Private Inheritance
 
-class Base {                                    // Base class
+#include <iostream>
+using namespace std;
+
+// Base class
+class Base
+{
 public:
-    void show() const {                         // Public member function
-        std::cout << "Base public function\n";  // Displays message
+    // Public function
+    void show()
+    {
+        cout << "Base public function" << endl;
     }
 };
 
-class PublicDerived : public Base {             // Public inheritance
+// Public inheritance
+class PublicDerived : public Base
+{
 };
 
-class PrivateDerived : private Base {           // Private inheritance
+// Private inheritance
+class PrivateDerived : private Base
+{
 public:
-    void callBaseShow() const {                 // Member function of derived class
-        show();                                 // Calls Base class function
+    // Access base function
+    void callBaseShow()
+    {
+        show();
     }
 };
 
-int main() {                                    // Program execution starts here
-    PublicDerived publicObject;                 // Creates PublicDerived object
-    publicObject.show();                        // Calls inherited public function
+int main()
+{
+    // Public derived object
+    PublicDerived obj1;
 
-    PrivateDerived privateObject;               // Creates PrivateDerived object
-    privateObject.callBaseShow();               // Calls function that accesses Base::show()
+    // Call base function
+    obj1.show();
 
-    // privateObject.show();                    // Error: show() is private through private inheritance
+    // Private derived object
+    PrivateDerived obj2;
 
-    return 0;                                   // Ends the program
+    // Call through derived function
+    obj2.callBaseShow();
+
+    return 0;
 }
