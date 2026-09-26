@@ -1,52 +1,67 @@
+// Program 12: Demonstration of Virtual Base Class and Diamond Inheritance
+
 #include <iostream>
 #include <string>
-#include <utility>
+using namespace std;
 
-class Person {
+// Base class
+class Person
+{
 protected:
-    std::string name;  // Protected member can be accessed by derived classes
+    string name;
 
 public:
-    explicit Person(std::string personName)
-        : name(std::move(personName)) {}  // Initialize Person's name
+    // Constructor
+    Person(string n)
+    {
+        name = n;
+    }
 
-    void displayName() const {
-        std::cout << "Name: " << name << '\n';
+    // Display name
+    void displayName()
+    {
+        cout << "Name: " << name << endl;
     }
 };
 
-class Student : virtual public Person {
-    // Virtual inheritance ensures only ONE Person object
-    // is created in TeachingAssistant
+// Virtual base class
+class Student : virtual public Person
+{
 public:
-    Student() : Person("Unknown") {}
+    // Constructor
+    Student() : Person("Unknown")
+    {
+    }
 };
 
-class Employee : virtual public Person {
-    // Employee also virtually inherits Person
-    // So Student and Employee share the same Person
+// Virtual base class
+class Employee : virtual public Person
+{
 public:
-    Employee() : Person("Unknown") {}
+    // Constructor
+    Employee() : Person("Unknown")
+    {
+    }
 };
 
-class TeachingAssistant : public Student, public Employee {
-    // Multiple inheritance: TeachingAssistant inherits
-    // from both Student and Employee
-
+// Final derived class
+class TeachingAssistant : public Student, public Employee
+{
 public:
-    explicit TeachingAssistant(std::string assistantName)
-        : Person(std::move(assistantName)),  // Most-derived class initializes Person
-          Student(),                         // Call Student constructor
-          Employee() {}                      // Call Employee constructor
+    // Constructor
+    TeachingAssistant(string n)
+        : Person(n), Student(), Employee()
+    {
+    }
 };
 
-int main() {
-    TeachingAssistant assistant("Riya");
-    // Creates TeachingAssistant object
-    // Constructor order: Person -> Student -> Employee -> TeachingAssistant
+int main()
+{
+    // Create object
+    TeachingAssistant ta("Meera");
 
-    assistant.displayName();
-    // Calls Person's displayName() function
+    // Display name
+    ta.displayName();
 
     return 0;
 }
