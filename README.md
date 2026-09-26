@@ -6,101 +6,120 @@
 - **PRN:** 125UAD1078
 - **Class/Division:** SY-AIDS-C
 - **Course Name:** Object Oriented Programming using C++
-- **Unit:** I
+- **Unit:** II
 - **Topics Covered:** I - IV
-
----
-
-## Unit I - Programs
-
-This repository contains C++ programs based on the concepts covered in Unit I.
-Each program demonstrates a basic C++ programming or Object-Oriented Programming concept.
-
----
 
 ## List of Programs
 
-### Program 1: Basic Data Types
-**File:** `Program_1_Basic_Data_Types.cpp`
+### Program 1: Single Inheritance
+Demonstrates single inheritance using a base class `Person` and derived class `Student`.
 
-**Description:**  
-Demonstrates the use of basic data types such as `int`, `char`, and `float`
-to store and display student roll number, grade, and fee amount.
+### Program 2: Protected Member Access
+Demonstrates how a derived class can access a protected member of the base class.
 
-### Program 2: If-Else
-**File:** `Program_2_If_Else.cpp`
+### Program 3: Public and Private Inheritance
+Demonstrates the difference between public and private inheritance.
 
-**Description:**  
-Demonstrates the use of the `if-else` selection statement to check whether
-a student has passed or failed based on marks.
+### Program 4: Multilevel Inheritance
+Demonstrates multilevel inheritance using `Person`, `Employee`, and `Manager` classes.
 
-### Program 3: Loop and Array
-**File:** `Program_3_Loop_and_Array.cpp`
+### Program 5: Hierarchical Inheritance
+Demonstrates hierarchical inheritance using `Vehicle` as the base class and `Car` and `Bike` as derived classes.
 
-**Description:**  
-Demonstrates how to store multiple student marks in an array and use a
-`for` loop to display all the elements.
+### Program 6: Multiple Inheritance
+Demonstrates multiple inheritance using `Academic` and `Sports` as base classes.
 
-### Program 4: Functions
-**File:** `Program_4_Functions.cpp`
+### Program 7: Resolving Multiple Inheritance Ambiguity
+Demonstrates how to resolve ambiguity when two base classes contain functions with the same name.
 
-**Description:**  
-Demonstrates the use of a function to perform addition of two numbers.
-It also demonstrates function declaration, function call, and function definition.
+### Program 8: Constructor and Destructor Order
+Demonstrates the order of execution of constructors and destructors in inheritance.
 
-### Program 5: Class and Object
-**File:** `Program_5_Class_and_Object.cpp`
+### Program 9: Parameterized Base Constructor
+Demonstrates how a derived class calls a parameterized constructor of the base class.
 
-**Description:**  
-Demonstrates the basic concepts of Object-Oriented Programming using a
-`Student` class and its object to store and display student details.
+### Program 10: Function Overriding
+Demonstrates function overriding using virtual functions in derived classes.
 
-### Program 6: Constructor and Destructor
-**File:** `Program_6_Constructor_and_Destructor.cpp`
+### Program 11: Abstract Class
+Demonstrates an abstract class using a pure virtual function.
 
-**Description:**  
-Demonstrates the working of a constructor and destructor. The constructor
-is automatically called when an object is created, while the destructor is
-called when the object is destroyed.
+### Program 12: Virtual Base Class and Diamond Inheritance
+Demonstrates the use of a virtual base class to solve the diamond inheritance problem.
 
-### Program 7: Static Member
-**File:** `Program_7_Static_Member.cpp`
+### Program 13: Friend Class
+Demonstrates how a friend class can access private members of another class.
 
-**Description:**  
-Demonstrates the use of a static data member to count the number of objects
-created from a class.
+### Program 14: Nested Class
+Demonstrates the creation and use of a class inside another class.
 
-### Program 8: Inline and Friend Function
-**File:** `Program_8_Inline_and_Friend_Function.cpp`
+### Mini Project 1: Vehicle Rental System
+Implements a simple vehicle rental system using inheritance and function overriding.
 
-**Description:**  
-Demonstrates the use of an inline member function and a friend function.
-The friend function is used to access private data of a class.
+### Mini Prject 2: Employee Payroll System
+Implements a simple employee payroll system using an abstract class and derived employee classes.
 
 ---
 
 ## Concepts Covered
 
-1. Basic Data Types
-2. Selection Statements
-3. Arrays
-4. Loops
-5. Functions
-6. Function Prototype
-7. Classes and Objects
-8. Constructors
-9. Destructors
-10. Static Data Members
-11. Inline Functions
-12. Friend Functions
+- Classes and Objects
+- Single Inheritance
+- Multilevel Inheritance
+- Hierarchical Inheritance
+- Multiple Inheritance
+- Protected Members
+- Public and Private Inheritance
+- Constructor and Destructor
+- Parameterized Constructor
+- Function Overriding
+- Virtual Functions
+- Abstract Classes
+- Pure Virtual Functions
+- Virtual Base Classes
+- Diamond Inheritance
+- Friend Classes
+- Nested Classes
+- Inheritance-Based Mini Projects
 
 ---
 
-## How to Compile and Run
+## Programming Language
 
-### Using G++
+**C++**
 
-Compile a program:
+## Compiler
 
-```bash
-g++ Program_1_Basic_Data_Types.cpp -o program1
+The programs can be compiled and executed using any standard C++ compiler such as:
+
+- GCC / G++
+- MinGW
+- Visual Studio
+- VS Code with C++ compiler
+
+---
+
+## Folder Organization
+
+```text
+CPP-OOP-Practical/
+│
+├── Program_01_Single_Inheritance.cpp
+├── Program_02_Protected_Member_Access.cpp
+├── Program_03_Public_Private_Inheritance.cpp
+├── Program_04_Multilevel_Inheritance.cpp
+├── Program_05_Hierarchical_Inheritance.cpp
+├── Program_06_Multiple_Inheritance.cpp
+├── Program_07_Inheritance_Ambiguity.cpp
+├── Program_08_Constructor_Destructor_Order.cpp
+├── Program_09_Parameterized_Base_Constructor.cpp
+├── Program_10_Function_Overriding.cpp
+├── Program_11_Abstract_Class.cpp
+├── Program_12_Virtual_Base_Class.cpp
+├── Program_13_Friend_Class.cpp
+├── Program_14_Nested_Class.cpp
+├── Program_15_Vehicle_Rental_System.cpp
+├── Program_16_Employee_Payroll_System.cpp
+│
+└── README.md
+
