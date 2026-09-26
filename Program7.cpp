@@ -1,33 +1,53 @@
-#include <iostream>                              // Used for input/output
+// Program 7: Demonstration of Resolving Multiple Inheritance Ambiguity
 
-class Academic {                                 // Base class
+#include <iostream>
+using namespace std;
+
+// First base class
+class Academic
+{
 public:
-    void display() const {                       // Displays academic information
-        std::cout << "Academic information\n";
+    // Display academic information
+    void display()
+    {
+        cout << "Academic information" << endl;
     }
 };
 
-class Sports {                                   // Base class
+// Second base class
+class Sports
+{
 public:
-    void display() const {                       // Displays sports information
-        std::cout << "Sports information\n";
+    // Display sports information
+    void display()
+    {
+        cout << "Sports information" << endl;
     }
 };
 
-class Student : public Academic, public Sports { // Multiple inheritance
+// Multiple inheritance
+class Student : public Academic, public Sports
+{
 public:
-    void displayAll() const {                    // Displays information from both classes
-        Academic::display();                     // Calls Academic display()
-        Sports::display();                       // Calls Sports display()
+    // Display both functions
+    void displayAll()
+    {
+        Academic::display();
+        Sports::display();
     }
 };
 
-int main() {
-    Student student;                             // Creates Student object
+int main()
+{
+    // Create Student object
+    Student s;
 
-    student.Academic::display();                 // Resolves ambiguity using scope resolution
-    student.Sports::display();                   // Resolves ambiguity using scope resolution
-    student.displayAll();                        // Calls both display functions
+    // Resolve ambiguity
+    s.Academic::display();
+    s.Sports::display();
 
-    return 0;                                    // Ends the program
+    // Display both
+    s.displayAll();
+
+    return 0;
 }
