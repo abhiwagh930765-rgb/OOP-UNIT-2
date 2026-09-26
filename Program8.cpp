@@ -1,28 +1,46 @@
-#include <iostream>                              // Used for input/output
+// Program 8: Demonstration of Constructor and Destructor Order
 
-class Base {                                     // Base class
+#include <iostream>
+using namespace std;
+
+// Base class
+class Base
+{
 public:
-    Base() {
-        std::cout << "Base constructor\n";       // Base constructor is called first
+    // Constructor
+    Base()
+    {
+        cout << "Base constructor" << endl;
     }
 
-    ~Base() {
-        std::cout << "Base destructor\n";        // Base destructor is called last
+    // Destructor
+    ~Base()
+    {
+        cout << "Base destructor" << endl;
     }
 };
 
-class Derived : public Base {                    // Derived class inherits Base
+// Derived class
+class Derived : public Base
+{
 public:
-    Derived() {
-        std::cout << "Derived constructor\n";   // Derived constructor is called after Base
+    // Constructor
+    Derived()
+    {
+        cout << "Derived constructor" << endl;
     }
 
-    ~Derived() {
-        std::cout << "Derived destructor\n";     // Derived destructor is called first
+    // Destructor
+    ~Derived()
+    {
+        cout << "Derived destructor" << endl;
     }
 };
 
-int main() {
-    Derived object;                              // Creates Derived object
-    return 0;                                    // Object is destroyed here
+int main()
+{
+    // Create Derived object
+    Derived obj;
+
+    return 0;
 }
