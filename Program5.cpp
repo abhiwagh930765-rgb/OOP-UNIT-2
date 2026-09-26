@@ -1,48 +1,76 @@
-#include <iostream>                            
-#include <string>                                // Used for string data type
-#include <utility>                               // Used for std::move
+// Program 5: Demonstration of Hierarchical Inheritance
 
-class Vehicle {                                  // Base class
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Vehicle
+{
 protected:
-    std::string registrationNumber;              // Protected data member
+    string registrationNumber;
 
 public:
-    explicit Vehicle(std::string registration)   // Constructor of Vehicle
-        : registrationNumber(std::move(registration)) {} // Initializes registration number
+    // Constructor
+    Vehicle(string reg)
+    {
+        registrationNumber = reg;
+    }
 
-    void start() const {                         // Member function to start vehicle
-        std::cout << "Vehicle " << registrationNumber << " started\n";
+    // Start vehicle
+    void start()
+    {
+        cout << "Vehicle " << registrationNumber << " started" << endl;
     }
 };
 
-class Car : public Vehicle {                     // Car inherits from Vehicle
+// Car class
+class Car : public Vehicle
+{
 public:
-    explicit Car(std::string registration)       // Constructor of Car
-        : Vehicle(std::move(registration)) {}    // Calls Vehicle constructor
+    // Constructor
+    Car(string reg) : Vehicle(reg)
+    {
+    }
 
-    void openBoot() const {                      // Member function of Car
-        std::cout << "Car boot opened\n";         // Displays message
+    // Car function
+    void openBoot()
+    {
+        cout << "Car boot opened" << endl;
     }
 };
 
-class Bike : public Vehicle {                    // Bike inherits from Vehicle
+// Bike class
+class Bike : public Vehicle
+{
 public:
-    explicit Bike(std::string registration)      // Constructor of Bike
-        : Vehicle(std::move(registration)) {}    // Calls Vehicle constructor
+    // Constructor
+    Bike(string reg) : Vehicle(reg)
+    {
+    }
 
-    void helmetReminder() const {                // Member function of Bike
-        std::cout << "Please wear a helmet\n";   // Displays message
+    // Bike function
+    void helmetReminder()
+    {
+        cout << "Please wear a helmet" << endl;
     }
 };
 
-int main() {                                     // Program execution starts here
-    Car car("MH12AB1234");                       // Creates Car object
-    Bike bike("MH12CD5678");                     // Creates Bike object
+int main()
+{
+    // Create Car object
+    Car car("MH14EF2468");
 
-    car.start();                                 // Calls inherited start() function
-    car.openBoot();                              // Calls Car's openBoot() function
-    bike.start();                                // Calls inherited start() function
-    bike.helmetReminder();                      // Calls Bike's helmetReminder() function
+    // Create Bike object
+    Bike bike("MH14GH1357");
 
-    return 0;                                 
+    // Car operations
+    car.start();
+    car.openBoot();
+
+    // Bike operations
+    bike.start();
+    bike.helmetReminder();
+
+    return 0;
 }
