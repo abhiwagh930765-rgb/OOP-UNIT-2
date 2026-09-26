@@ -1,44 +1,69 @@
-#include <iostream>
+// Program 11: Demonstration of Abstract Class
 
-class Shape {
+#include <iostream>
+using namespace std;
+
+// Abstract base class
+class Shape
+{
 public:
-    virtual double area() const = 0;  // Pure virtual function
-    virtual ~Shape() = default;
+    // Pure virtual function
+    virtual double area() = 0;
 };
 
-class Rectangle : public Shape {  // Rectangle inherits Shape
+// Rectangle class
+class Rectangle : public Shape
+{
 private:
     double length;
     double width;
 
 public:
-    Rectangle(double givenLength, double givenWidth)
-        : length(givenLength), width(givenWidth) {}
+    // Constructor
+    Rectangle(double l, double w)
+    {
+        length = l;
+        width = w;
+    }
 
-    double area() const override {  // Override area() for rectangle
+    // Calculate area
+    double area() override
+    {
         return length * width;
     }
 };
 
-class Circle : public Shape {  // Circle inherits Shape
+// Circle class
+class Circle : public Shape
+{
 private:
     double radius;
 
 public:
-    explicit Circle(double givenRadius)
-        : radius(givenRadius) {}
+    // Constructor
+    Circle(double r)
+    {
+        radius = r;
+    }
 
-    double area() const override {  // Override area() for circle
-        return 3.141592653589793 * radius * radius;
+    // Calculate area
+    double area() override
+    {
+        return 3.14159 * radius * radius;
     }
 };
 
-int main() {
-    Rectangle rectangle(5.0, 3.0);
-    Circle circle(2.0);
+int main()
+{
+    // Create Rectangle object
+    Rectangle r(8, 4);
 
-    std::cout << "Rectangle Area: " << rectangle.area() << '\n';
-    std::cout << "Circle Area: " << circle.area() << '\n';
+    // Create Circle object
+    Circle c(3);
+
+    // Display areas
+    cout << "Rectangle Area: " << r.area() << endl;
+    cout << "Circle Area: " << c.area() << endl;
 
     return 0;
 }
